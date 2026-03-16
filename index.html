@@ -290,10 +290,6 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
 </footer>
 
 <script>
-let mx=0,my=0,tx=0,ty=0;
-function animateTrail(){tx+=(mx-tx)*.12;ty+=(my-ty)*.12;trail.style.transform=`translate(${tx-18}px,${ty-18}px)`;requestAnimationFrame(animateTrail)}
-animateTrail();
-document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{trail.style.width='50px';trail.style.height='50px';trail.style.transform=`translate(${tx-25}px,${ty-25}px)`});el.addEventListener('mouseleave',()=>{trail.style.width='36px';trail.style.height='36px'})});
 
 // Nav scroll
 window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50)});
