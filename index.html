@@ -9,14 +9,7 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{--navy:#0a0f1e;--gold:#C6963A;--gold-light:#d4a94e;--dark:#060a14;--white:#fff;--gray:#a0a0a0;--card-bg:#111827}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--white);cursor:none;overflow-x:hidden}
-/* Custom cursor */
-.cursor{position:fixed;width:12px;height:12px;background:#f5c542;border-radius:50%;pointer-events:none;z-index:9999;transition:transform .15s ease;mix-blend-mode:difference}
-.cursor-trail{position:fixed;width:36px;height:36px;border:1.5px solid rgba(198,150,58,.5);border-radius:50%;pointer-events:none;z-index:9998;transition:transform .08s ease,width .3s,height .3s}
-a,button{cursor:none}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;width:100%;z-index:100;padding:1.2rem 4%;display:flex;justify-content:space-between;align-items:center;transition:background .3s}
 nav.scrolled{background:rgba(10,15,30,.95);backdrop-filter:blur(12px);box-shadow:0 2px 20px rgba(0,0,0,.4)}
 .nav-logo{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;letter-spacing:3px;color:var(--gold)}
 .nav-links{display:flex;gap:2rem;list-style:none}
@@ -128,9 +121,8 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
 </head>
 <body>
 
-<!-- Custom Cursor -->
-<div class="cursor" id="cursor"></div>
-<div class="cursor-trail" id="cursorTrail"></div>
+
+
 
 <!-- NAV -->
 <nav id="navbar">
@@ -298,10 +290,7 @@ footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding
 </footer>
 
 <script>
-// Custom cursor
-const cursor=document.getElementById('cursor'),trail=document.getElementById('cursorTrail');
 let mx=0,my=0,tx=0,ty=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.transform=`translate(${mx-6}px,${my-6}px)`});
 function animateTrail(){tx+=(mx-tx)*.12;ty+=(my-ty)*.12;trail.style.transform=`translate(${tx-18}px,${ty-18}px)`;requestAnimationFrame(animateTrail)}
 animateTrail();
 document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{trail.style.width='50px';trail.style.height='50px';trail.style.transform=`translate(${tx-25}px,${ty-25}px)`});el.addEventListener('mouseleave',()=>{trail.style.width='36px';trail.style.height='36px'})});
